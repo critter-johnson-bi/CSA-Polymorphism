@@ -49,7 +49,7 @@ public abstract class Triangle extends Shape
    public String toString()
    {
       return String.format("%s: sideA = %.2f, sideB = %.2f, sideC = %.2f, Area = %.2f, Perimeter = %.2f",
-                            getA(), getB(), getC(), area(), getPerimeter());
+                            type, getA(), getB(), getC(), area(), getPerimeter());
    }
 
 }

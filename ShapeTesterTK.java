@@ -2,14 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeTesterTK {
-   private final static int MINSIZE = 10;
-   private final static int MAXSIZE = 100;
+   public final static int MINSIZE = 10;
+   public final static int MAXSIZE = 100;
 
    private List<Shape> shapes;
  
    ShapeTesterTK() {
       shapes = new ArrayList<Shape>(MAXSIZE);
-   }
+       for (int i = 0; i < MAXSIZE; i++) addRandomShape();
+  }
+   
+   public List<Shape> getShapes() { return shapes; }
    
    private double randNum() {
       return Math.random() * (MAXSIZE - MINSIZE) + MINSIZE;
@@ -42,7 +45,7 @@ public class ShapeTesterTK {
       if (! (triangle == null)) shapes.add(triangle);
    }
   
-   private void addRandomShape() {
+   public void addRandomShape() {
       int rand = (int) (Math.random() * 7);
       switch (rand) {
          case 0: addCircle(); 
@@ -70,9 +73,12 @@ public class ShapeTesterTK {
    }  
 
   public void legalExamples() {
+//    switch (s.getType()) {
+//    }
+    
     for (Shape s : shapes) {
       if (s instanceof Circle) {
-        System.out.printf("Circumference: %s\n", ((Circle)s).circumference());
+        System.out.printf("Circumference: %s\n", ((Circle)s).getCircum());
         }
        }
        
@@ -80,20 +86,25 @@ public class ShapeTesterTK {
   }
   
   public static void compilerErrorExamples() {
-  
+ /*
+      for (Shape s : shapes) {
+      if (s instanceof Circle) {
+        System.out.printf("Circumference: %s\n", s.getCircum());
+        }
+       }
+
+*/
   }
   
   public static void runtimeErrorExamples() {
   
   }
 
-
    public static void main(String[] args) {
    
       ShapeTesterTK st = new ShapeTesterTK();
    
-      for (int i = 0; i < MAXSIZE; i++) st.addRandomShape();
-      System.out.println(st);
+      //System.out.println(st);
       
       st.legalExamples();
       st.compilerErrorExamples();
