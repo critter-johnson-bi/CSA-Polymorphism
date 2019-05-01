@@ -41,7 +41,7 @@ public abstract class Triangle extends Shape
    public void setC(double c)
    { sideC = c; }
    
-   public abstract double getArea();
+   public abstract double area();
    
    public double getPerimeter()
    { return getA() + getB() + getC(); }
@@ -49,7 +49,7 @@ public abstract class Triangle extends Shape
    public String toString()
    {
       return String.format("%s: sideA = %.2f, sideB = %.2f, sideC = %.2f, Area = %.2f, Perimeter = %.2f",
-                            getA(), getB(), getC(), getArea(), getPerimeter());
+                            getA(), getB(), getC(), area(), getPerimeter());
    }
 
 }
