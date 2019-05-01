@@ -6,6 +6,10 @@ Square() {
   super(1, 1);
  }
  
+ Square(double s) {
+   setSide(s);
+ }
+ 
  public double getSide() {
    return super.getLength();
    }
