@@ -9,7 +9,6 @@ public class Square extends Rectangle {
  
    Square(double s) {
       super(s,s);
-   //   super.location = new Point();
       super.setLocation(50, 50);
       
    }
