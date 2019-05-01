@@ -41,7 +41,7 @@ public abstract class Triangle extends Shape
    public void setC(double c)
    { sideC = c; }
    
-   public abstract getArea();
+   public abstract double getArea();
    
    public double getPerimeter()
    { return getA() + getB() + getC(); }
