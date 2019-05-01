@@ -7,3 +7,9 @@ git pull // if it gives any errors about how the local repository doesn't match 
 git add <file to add (-A for all in most cases)>
 git commit -m "Commit message"
 git push
+
+--- FAQ ---
+// if when you pull it says you need to merge and opens up a menu,\
+press ESC
+type ":qt" (without quotes)
+(add, commit, and push as normal)
