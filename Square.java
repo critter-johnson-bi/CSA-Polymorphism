@@ -7,8 +7,8 @@ Square() {
  }
  
  Square(double s) {
-   setSide(s);
- }
+   super(s,s);
+    }
  
  public double getSide() {
    return super.getLength();
