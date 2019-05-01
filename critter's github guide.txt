@@ -1,0 +1,9 @@
+--- getting files from the repository ---
+git pull // if it gives any errors about how the local repository doesn't match remote,
+	 // do whatever it tells you to ignore the differences
+
+--- adding your files to the repo ---
+// make sure you pull before you push sice we are all working on the same branch!!!
+git add <file to add (-A for all in most cases)>
+git commit -m "Commit message"
+git push
