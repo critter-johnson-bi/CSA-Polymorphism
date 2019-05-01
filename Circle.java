@@ -18,20 +18,13 @@ public class Circle extends Shape
    }
    
    //getters
-   public double getCircum()
-   {
-      return circumference;
-   }
+   public double getCircum() { return circumference; }
    
-   public double getDiameter()
-   {
-      return diameter;
-   }
+   public double getDiameter() { return diameter; }
    
-   public double area()
-   {
-      return Math.PI * Math.pow((diameter / 2), 2);
-   }
+   public double getRadius() { return diameter / 2; }
+   
+   public double area() { return Math.PI * Math.pow((diameter / 2), 2); }
    
    //setters
    public void setCircum(double c) { circumference = c; diameter = circumference / Math.PI; }
