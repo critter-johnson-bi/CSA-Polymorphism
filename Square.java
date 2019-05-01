@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Color;
 
 public class Square extends Rectangle {
 
@@ -7,10 +8,15 @@ public class Square extends Rectangle {
       this(1);
    }
  
+   Square(double s, Point p, Color line, Color fill) {
+     super (s,s);
+     super.setLocation(p);
+     super.setLineColor(line);
+     super.setFillColor(fill);
+   }
+   
    Square(double s) {
-      super(s,s);
-      super.setLocation(50, 50);
-      
+      this(s, new Point(50, 50), Color.BLUE, Color.GREEN);      
    }
  
    public double getSide() {
@@ -31,12 +37,27 @@ public class Square extends Rectangle {
      int ul = (int) topLeft.getX();
      int ur = (int) topLeft.getY();
      int side = (int) super.getWidth();
-     
+/*     
      g.drawLine(ul, ur, ul + side, ur);
      g.drawLine(ul, ur, ul, ur + side);
      g.drawLine(ul+side, ur+side, ul, ur+side);
      g.drawLine(ul+side, ur+side, ul + side, ur);
+     */
      
+     Color penColor = super.getLineColor();
+     Color fillColor = super.getFillColor();
+     
+     if (penColor == null) penColor = Color.BLUE;
+     if (fillColor == null) fillColor = Color.GREEN;
+     
+     if (fillColor == null) {
+       g.setColor(penColor);        
+       g.drawRect(ul, ur, side, side);
+       }
+     else {
+       g.setColor(fillColor);
+       g.fillRect(ul, ur, side, side);
+     } 
    }
       
    public String toString() {
