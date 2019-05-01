@@ -1,0 +1,14 @@
+All:
+   Ensure your toString() prints the type of object first
+   Rename type to TYPE (IT IS A FINAL CONSTANT!)
+     
+Rectangle:
+   Fix error with length, see your constructor
+
+Circle:
+   Store either the radius or the diameter, calculate everything else
+   circumference() should be a method
+   
+Equilateral: 
+    Rename class
+       
