@@ -51,5 +51,4 @@ public abstract class Triangle extends Shape
       return String.format("%s: sideA = %.2f, sideB = %.2f, sideC = %.2f, Area = %.2f, Perimeter = %.2f",
                             TYPE, getA(), getB(), getC(), area(), getPerimeter());
    }
-
 }

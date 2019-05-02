@@ -1,3 +1,5 @@
+https://github.com/critter-johnson-bi/CSA-Polymorphism
+
 --- getting files from the repository ---
 git pull // if it gives any errors about how the local repository doesn't match remote,
 	 // do whatever it tells you to ignore the differences
@@ -9,7 +11,7 @@ git commit -m "Commit message"
 git push
 
 --- FAQ ---
-// if when you pull it says you need to merge and opens up a menu,\
+// if when you pull it says you need to merge and opens up a menu,
 press ESC
 type ":qt" (without quotes)
 (add, commit, and push as normal)
