@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class ShapeGraphics extends JComponent {
-   private static Color[] colors = {Color.BLUE, Color.GREEN, Color.BLACK, Color.YELLOW, Color.MAGENTA};
+
+   private static Color[] colors = {Color.BLUE, Color.GREEN, Color.BLACK, Color.CYAN, Color.MAGENTA, Color.GRAY,
+                                    Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.LIGHT_GRAY, Color.DARK_GRAY};
    
-   List<Shape> shapes;
+   private ShapeTesterTK shapes;
+   
+   public Graphics graphic;
 
    ShapeGraphics () {
       Container canvas;
@@ -21,19 +25,23 @@ public class ShapeGraphics extends JComponent {
    
       canvas = frame.getContentPane();
       canvas.setBackground(Color.YELLOW);
-      canvas.add(this);
+      canvas.add(this);    // this, because we extend JComponent, is of type JComponent
+      shapes = new ShapeTesterTK();
       }
   
    public void paintComponent(Graphics g) {
+      graphic = g;
       g.setColor(Color.BLUE);
       drawShapes(g, shapes);
    }
 
    public void drawShapes(Graphics g, List<Shape> shapes) {
       for (Shape s : shapes) {
-         if (s instanceof Square) {
+         if (s instanceof Square) { // Once all classes have the drawMe method this won't be necessary
             System.out.println("Drawing: " + s);
-            s.drawMe(g);
+           //  s.drawMe(g); // will work when the Shape abstract class has the abstract drawMe method
+            Square square = (Square) s;
+            square.drawMe(g);
          }
       }    
    }
@@ -53,14 +61,13 @@ public class ShapeGraphics extends JComponent {
    private void randomizeColors() {
      for (Shape s : shapes) {
       s.setLineColor(randomColor());
+      s.setLineColor(Color.BLACK);
       s.setFillColor(randomColor());
      }
    }
    
    public static void main(String[] args) {
-      ShapeTesterTK st = new ShapeTesterTK();
       ShapeGraphics s = new ShapeGraphics();
-      s.shapes = st.getShapes();    
       s.randomizeLocations(); 
       s.randomizeColors();
       }
