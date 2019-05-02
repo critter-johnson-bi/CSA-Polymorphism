@@ -1,6 +1,7 @@
 All:
    Ensure your toString() prints the type of object first
    Rename type to TYPE (IT IS A FINAL CONSTANT!)
+   Ensure your latest version works with the latest Shape.java (pull it, it has changed)
      
 Rectangle:
    Fix error with length, see your constructor
@@ -11,4 +12,22 @@ Circle:
    
 Equilateral: 
     Rename class
-       
+ 
+ 
+ 
+ Questions:
+ 
+ - What is the best way to handle the TYPE information?
+ - How could we include an interface
+ - Should we force every shape to have a perimeter method - even though not all shapes actually have one?
+ - What other shapes should we add
+ - How could we add the ability to draw the shapes?  What data would we need?  What methods?
+ - Given a simple java graphics class, could you add code that would draw your shape?  
+ - 
+ Using the Tricky Polymorphism Worksheet for a guide, in your own tester class
+ 
+ - Write some legal method calls
+ - Write some calls that result in compiler errors
+ - Write some calls that result in method errors      
+ 
+ You may copy/paste any methods from the ShapeTesterTK to your tester.
