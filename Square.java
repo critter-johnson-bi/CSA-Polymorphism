@@ -33,6 +33,18 @@ public class Square extends Rectangle {
       return 4 * super.getLength();
    }
    
+   public void slide (double x, double y) {
+     Point oldPoint = getLocation();
+     double oldX = oldPoint.getX();
+     double oldY = oldPoint.getY();
+     double newX = oldX + x;
+     double newY = oldY + y;
+     
+     Point newLocation = new Point((int)newX, (int)newY);
+     setLocation(newLocation);
+   }
+     
+   
    public void drawMe(Graphics g) {
    
       Point topLeft = super.getLocation();

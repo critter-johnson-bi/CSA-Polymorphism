@@ -4,36 +4,17 @@ import java.util.List;
 public class ShapeTesterTK extends ArrayList<Shape>{
 
    public final static int MINSIZE = 10;        // smallest shape size
-   public final static int MAXSIZE = 100;       // largest shape size, also size of the arraylist of shapes
+   public final static int MAXSIZE = 20;       // largest shape size, also size of the arraylist of shapes
 
-  // private List<Shape> shapes;                  // list of shapes
- 
    ShapeTesterTK() {                            // instantiates and fills array with random shapes
- //     shapes = new ArrayList<Shape>(MAXSIZE);
- //       this = new ArrayList<Shape>(MAXSIZE);
        for (int i = 0; i < MAXSIZE; i++) addRandomShape();
   }
    
- //  public List<Shape> getShapes() { return shapes; }  // allows other classes to grab the array list.  I don't like this, because they can modify it.
-                                                      // Perhaps it would be better to give them a clone of the array list??
-   
-   private double randNum() {
+   private static double randNum() {
       return Math.random() * (MAXSIZE - MINSIZE) + MINSIZE; // Helper method to return a random number between the min and max sizes
-   }
-  
-   private void addCircle() {
-      add(new Circle(randNum()));           // Adds a new Circle with a random size
-   }
-  
-   private void addRectangle() {
-      add(new Rectangle(randNum(), randNum()));   // Adds a new Rectangle with random dimensions
-   }
-  
-   private void addSquare() {                      // Adds a new Square with a random side size
-      add(new Square(randNum()));
-   }
-
-   private void addTriangle() {                    // Adds a random type of triangle, with random dimensions
+   }      
+   
+  public static Shape getRandomTriangle() {                    // Adds a random type of triangle, with random dimensions
       int rand = (int) (Math.random() * 4);
       Shape triangle = null;
    
@@ -42,30 +23,28 @@ public class ShapeTesterTK extends ArrayList<Shape>{
             break;
       // case 1: triangle = new Scalene(randNum(), randNum(), randNum()); break;
       // case 2: triangle = new Isoceles(randNum(), randNum()); break;
-         case 3: triangle = new RightTriangle(randNum(), randNum()); 
-            break;
+         default: triangle = new RightTriangle(randNum(), randNum()); 
+            break;           
       } 
-      if (! (triangle == null)) add(triangle);    // Ensure that a triangel was actually created
+      return triangle;
    }
   
-   public void addRandomShape() {                        // Add a random shape to the list
+   public static Shape getRandomShape() {                        // Add a random shape to the list
       int rand = (int) (Math.random() * 7);
       switch (rand) {
-         case 0: addCircle(); 
-            break;
-         case 1: addSquare(); 
-            break;
-         case 2: addRectangle(); 
-            break;
-         case 3: addTriangle(); 
-            break;
-         case 4: addTriangle(); 
-            break;
-         case 5: addTriangle(); 
-            break;
-         case 6: addTriangle(); 
-            break;
-      }
+         case 0: return new Circle(randNum()); 
+         case 1: return new Square(randNum()); 
+         case 2: return new Rectangle(randNum(), randNum());    
+         case 3: 
+         case 4:         
+         case 5: 
+         case 6: return getRandomTriangle(); 
+                 }
+       return null;
+   }
+   
+   public void addRandomShape() {
+     add(getRandomShape());
    }
 
    public String toString() {          // Print each shape, using its toString on a separate line
@@ -81,11 +60,9 @@ public class ShapeTesterTK extends ArrayList<Shape>{
     
     for (Shape s : this) {
       if (s instanceof Circle) {
-        System.out.printf("Circumference: %s\n", ((Circle)s).getCircum());
+        System.out.printf("Circumference: %s\n", ((Circle)s).getCircumference());
         }
-       }
-       
-        
+       }       
   }
   
   public static void compilerErrorExamples() { // We will add commented method calls that will not compile to this method
@@ -95,8 +72,7 @@ public class ShapeTesterTK extends ArrayList<Shape>{
         System.out.printf("Circumference: %s\n", s.getCircum());
         }
        }
-
-*/
+       */
   }
   
   public static void runtimeErrorExamples() {   // We will add methods that will cause a runtime error here.  These will sometiems be commented

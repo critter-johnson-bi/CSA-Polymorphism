@@ -9,7 +9,7 @@ public abstract class Shape {
   private Color fillColor;
  
   abstract double area();
-  abstract void drawMe(Graphics g);
+ // abstract void drawMe(Graphics g);
   
   public String getType() {
     return type;
