@@ -2,38 +2,41 @@ public class Circle extends Shape
 {
    //fields
    public static final String type = "Circle";
-   private double circumference, diameter;
+   private double radius;
 
    //constructors
    public Circle() //when to write a default constructor of a subclass?
    {
-      circumference = 1;
-      diameter = 1;
+      radius = 1;
    }
    
-   public Circle(double d)
+   public Circle(double r)
    {
-      diameter = d;
-      circumference = Math.PI * diameter;
+      setRadius(r);
    }
    
    //getters
-   public double getCircum() { return circumference; }
+   public double getRadius() { return radius; }
    
-   public double getDiameter() { return diameter; }
+   public double getCircumference() 
+   {
+      return 2 * Math.PI * radius;
+   }
    
-   public double getRadius() { return diameter / 2; }
+   public double getDiameter()
+   {
+      return 2 * radius;
+   }
    
-   public double area() { return Math.PI * Math.pow((diameter / 2), 2); }
+   public double area() { return Math.PI * Math.pow((radius), 2); }
    
    //setters
-   public void setCircum(double c) { circumference = c; diameter = circumference / Math.PI; }
-   
-   public void setDiameter(double d) { diameter = d; circumference = Math.PI * diameter; }
+   public void setRadius(double r) { radius = r; }
    
    //toString method
    public String toString()
    {
-      return type + "Radius: %.2f" + diameter / 2 + ", Circumference: %.2f" + circumference + ", with Area: %.2f" + area();
+      return type + "Radius: %.2f" + radius + ", Circumference: %.2f" + getCircumference() + ", with Area: %.2f" + area();
    }
+   
 }
