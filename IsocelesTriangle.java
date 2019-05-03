@@ -6,15 +6,10 @@
 
 public class IsocelesTriangle extends Triangle
 {
-
-   //FIELDS
-   public static final TYPE = "Isoceles Triangle";
-   
-   //CONSTRUCTORS
-   
    public IsocelesTriangle()
    {
       super(1, 1, 2);
+      setType("Triangle");
    }
    
    public IsocelesTriangle(double twoSides, double otherside)
