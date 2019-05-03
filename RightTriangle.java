@@ -7,6 +7,7 @@ public class RightTriangle extends Triangle
    public RightTriangle(double sideA, double sideB)
    {
       super(sideA, sideB, Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2)));
+      setType("Right Triangle");
    }
 
    public double area()

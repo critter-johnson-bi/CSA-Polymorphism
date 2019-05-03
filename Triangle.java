@@ -11,7 +11,7 @@ public abstract class Triangle extends Shape
    private double sideA;
    private double sideB;
    private double sideC;
-   public static final String TYPE = "Triangle";
+   private static final String type = "Triangle";
 
    //CONSTRUCTOR
    public Triangle(double a, double b, double c)
@@ -49,6 +49,6 @@ public abstract class Triangle extends Shape
    public String toString()
    {
       return String.format("%s: sideA = %.2f, sideB = %.2f, sideC = %.2f, Area = %.2f, Perimeter = %.2f",
-                            TYPE, getA(), getB(), getC(), area(), getPerimeter());
+                            getType(), getA(), getB(), getC(), area(), getPerimeter());
    }
 }
