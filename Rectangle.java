@@ -17,6 +17,15 @@ public class Rectangle extends Shape {
       setType("Rectangle");
    }
    
+   public Rectangle(double l, double w) {
+      length = l;
+      width = w;
+      setLocation(new Point());
+      setLineColor(Color.BLUE);
+      setFillColor(Color.RED);
+      setType("Rectangle");
+   }
+   
    //Accessor for length field
    public double getLength() {
       return length;
