@@ -3,31 +3,41 @@ All:
    Rename type to TYPE (IT IS A FINAL CONSTANT!)
    Ensure your latest version works with the latest Shape.java (pull it, it has changed)
      
-Rectangle:
-   Fix error with length, see your constructor
-
-Circle:
-   Store either the radius or the diameter, calculate everything else
-   circumference() should be a method
-   
-Equilateral: 
-    Rename class
- 
- 
- 
  Questions:
  
- - What is the best way to handle the TYPE information?
  - How could we include an interface
+ 
  - Should we force every shape to have a perimeter method - even though not all shapes actually have one?
+      - if we do, should circle also have a circumference?
+         what about contains, length, width
+      
  - What other shapes should we add
+      - Regular Polygons
+      - Irregular Polygons
+      - Others?
+       
  - How could we add the ability to draw the shapes?  What data would we need?  What methods?
+      - Should everything for drawing be in the Shapes Interface or another interface, why?
+ 
  - Given a simple java graphics class, could you add code that would draw your shape?  
- - 
+       - 
+       
+ - When drawing a shape, you don't want to draw it off of the screen.
+         - If you know the size of the frame and the position and size of the object, you can 
+               make sure that you don't draw it if it is not completely on the frame, but
+               that requires each shape to have a size ... is it reasonable to require that each
+               shape provide a getWidth9) and a getLength()?
+               
+ - Should our shapes have their own speed?  Or, should those be stored somewhere else?
+      Should we have graphics objects that have
+         Location
+         Speed
+         Whether they should be drawn or not
+
  Using the Tricky Polymorphism Worksheet for a guide, in your own tester class
  
- - Write some legal method calls
- - Write some calls that result in compiler errors
- - Write some calls that result in method errors      
+      - Write some legal method calls
+      - Write some calls that result in compiler errors
+      - Write some calls that result in method errors      
  
  You may copy/paste any methods from the ShapeTesterTK to your tester.
