@@ -4,7 +4,11 @@
    Purpose: triangle abstract class
 */
 
-public abstract class Triangle extends Shape
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Color;
+
+public abstract class Triangle extends DrawableShape
 {
 
    //FIELDS
@@ -13,12 +17,26 @@ public abstract class Triangle extends Shape
    private double sideC;
    private static final String type = "Triangle";
 
-   //CONSTRUCTOR
+   //CONSTRUCTORS
+   
+   public Triangle()
+   {
+      this(1, 1, 1);
+   }
+   
    public Triangle(double a, double b, double c)
+   {
+      this(a, b, c, new Point(1, 1), Color.BLUE, Color.GREEN);
+   }
+   
+   public Triangle(double a, double b, double c, Point p, Color line, Color fill)
    {
       sideA = a;
       sideB = b;
       sideC = c;
+      setLocation(p);
+      setLineColor(line);
+      setFillColor(fill);
    }
    
    //GETTERS
@@ -41,7 +59,7 @@ public abstract class Triangle extends Shape
    public void setC(double c)
    { sideC = c; }
    
-   public abstract double area();
+   public abstract double getArea();
    
    public double getPerimeter()
    { return getA() + getB() + getC(); }
@@ -49,6 +67,6 @@ public abstract class Triangle extends Shape
    public String toString()
    {
       return String.format("%s: sideA = %.2f, sideB = %.2f, sideC = %.2f, Area = %.2f, Perimeter = %.2f",
-                            getType(), getA(), getB(), getC(), area(), getPerimeter());
+                            getType(), getA(), getB(), getC(), getArea(), getPerimeter());
    }
 }

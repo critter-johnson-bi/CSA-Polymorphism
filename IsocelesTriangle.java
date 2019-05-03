@@ -4,6 +4,10 @@
    Purpose: isoceles triangle class
 */
 
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Color;
+
 public class IsocelesTriangle extends Triangle
 {
    public IsocelesTriangle()
@@ -12,16 +16,21 @@ public class IsocelesTriangle extends Triangle
       setType("Triangle");
    }
    
-   public IsocelesTriangle(double twoSides, double otherside)
+   public IsocelesTriangle(double twoSides, double otherSide)
    {
       super(twoSides, twoSides, otherSide);
    }
    
    //METHODS
-   public double area()
+   public double getArea()
    {
       double height = Math.sqrt(getA() * getA() - getC() * getC());
       return 0.5 * getC() * height;
+   }
+   
+   public void drawMe(Graphics g)
+   {
+      
    }
 
 }
