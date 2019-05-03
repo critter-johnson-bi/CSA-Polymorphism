@@ -172,7 +172,6 @@ public class ShapeGraphics extends JComponent implements ActionListener {
                      s =  null;
                
                }
-               num++;
                System.out.println(num);
             }}
          );
