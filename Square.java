@@ -65,17 +65,9 @@ public class Square extends Rectangle {
       int ul = (int) topLeft.getX();
       int ur = (int) topLeft.getY();
       int side = (int) super.getWidth();
-   /*     
-     g.drawLine(ul, ur, ul + side, ur);
-     g.drawLine(ul, ur, ul, ur + side);
-     g.drawLine(ul+side, ur+side, ul, ur+side);
-     g.drawLine(ul+side, ur+side, ul + side, ur);
-     */
-     
       Color penColor = super.getLineColor();
       Color fillColor = super.getFillColor();
-     
-     
+       
       if (penColor == null && fillColor == null) {
          g.setColor(Color.BLACK);        
          g.drawRect(ul, ur, side, side);
@@ -94,7 +86,7 @@ public class Square extends Rectangle {
       
    public String toString() {
       return String.format("%s: side: %,.2f, area: %,.2f, perimeter: %,.2f", 
-                              super.getType(), super.getLength(), area(), perimeter());
+                              super.getType(), super.getLength(), getArea(), getPerimeter());
     
    }
  
