@@ -3,26 +3,13 @@ All:
    Rename type to TYPE (IT IS A FINAL CONSTANT!)
    Ensure your latest version works with the latest Shape.java (pull it, it has changed)
      
-Rectangle:
-   Fix error with length, see your constructor
-
-Circle:
-   Store either the radius or the diameter, calculate everything else
-   circumference() should be a method
-   
-Equilateral: 
-    Rename class
- 
- 
- 
  Questions:
  
- - What is the best way to handle the TYPE information?  
-      - Where does the declaration belong if we want EVERY shape to have one.
  - How could we include an interface
  
  - Should we force every shape to have a perimeter method - even though not all shapes actually have one?
       - if we do, should circle also have a circumference?
+         what about contains, length, width
       
  - What other shapes should we add
       - Regular Polygons

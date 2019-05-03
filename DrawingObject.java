@@ -1,6 +1,6 @@
 public class DrawingObject {
-  private final int MIN_SPEED = 5;
-  private final int MAX_SPEED = 20;
+  private static final int MIN_SPEED = 5;
+  private static final int MAX_SPEED = 20;
   
   private Shape shape;
   private boolean draw;
@@ -10,8 +10,8 @@ public class DrawingObject {
     shape = ShapeTesterTK.getRandomShape();
     int option = (int) Math.random() * 3;
     draw = option < 2;
-    speed = Math.random() * (MAX_SPEED - MIN_SPEED) + MIN_SPEED;
-  }
+    speed =  getRandomSpeed();
+     }
   
   public Shape getShape () {
     return shape;
@@ -25,6 +25,9 @@ public class DrawingObject {
     return speed;
   } 
   
+  public static double getRandomSpeed() {
+    return Math.random() * (MAX_SPEED - MIN_SPEED) + MIN_SPEED;
+  }  
   public void setShape() {
     shape = ShapeTesterTK.getRandomShape();
   }

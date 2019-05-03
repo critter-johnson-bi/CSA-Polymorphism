@@ -1,11 +1,14 @@
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Container;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Label;
 import java.awt.Point;
 
 import javax.swing.JComponent;
@@ -29,15 +32,17 @@ public class ShapeGraphics extends JComponent implements ActionListener {
    private Timer tmrSquares;
    private Square square;
    
+   private int collisions;
+   private Label lblCollisions;
+   
    ShapeGraphics () {  // create the Graphics Window and add "this" to it
       objects = new DrawingObjectTester();
-      
-      b = new Button("Reset");      // Allows you to have the button to click
-      b.addActionListener(this);
+      createFrame();           
+      setupActionListeners();  
+      addClickListeners(); 
+   }
    
-      JPanel p1 = new JPanel();     // Places the panel on a button
-      p1.add(b);     
-   
+   private void createFrame() {
       JFrame frame = new JFrame("Our Shapes");  // Creates the window
       frame.setSize(WIDTH, HEIGHT);
       frame.setLocationRelativeTo(null); // sets the window in the center
@@ -47,16 +52,39 @@ public class ShapeGraphics extends JComponent implements ActionListener {
       canvas = frame.getContentPane();       // and sets it up
       canvas.setLayout(new BorderLayout());  // Layouts determine how components are displayed
    
-      canvas.add(p1, BorderLayout.PAGE_START);  // adds the panel
+      canvas.add(headerPanel(), BorderLayout.PAGE_START);  // adds the panel
       
       canvas.setBackground(Color.YELLOW);
       canvas.add(this, BorderLayout.CENTER);    // adds the content frame
-   
-      frame.setVisible(true); 
+      canvas.add(footerPanel(), BorderLayout.PAGE_END);  // adds the panel
       
-      setupActionListeners();   
+      frame.setVisible(true); 
    }
    
+   private JPanel headerPanel() {
+     
+      Button b = new Button("Reset");      // Allows you to have the button to click
+      b.addActionListener(this);
+   
+      JPanel panel = new JPanel();     // Places the panel on a button
+      panel.setBackground(Color.RED);
+      panel.add(b);     
+   
+      return panel;   
+   }
+     
+   private JPanel footerPanel() {
+     
+      lblCollisions = new Label("Collisions");      // Allows you to have the button to click
+      //b.addActionListener(this);
+      lblCollisions.setBackground(Color.WHITE);
+      JPanel panel = new JPanel();     // Places the panel on a button
+      panel.setBackground(Color.BLUE);
+      panel.add(lblCollisions); 
+          
+      return panel;
+   }
+     
    private boolean onFrame(Point p) {
    
       double x = p.getX();
@@ -74,7 +102,6 @@ public class ShapeGraphics extends JComponent implements ActionListener {
      
    private void moveSquare(Square square, double speed) {
       Point p = square.getLocation();
-     
       square.slide(speed,0);
       this.repaint();
    }
@@ -91,6 +118,18 @@ public class ShapeGraphics extends JComponent implements ActionListener {
                moveSquare(square, o.getSpeed()); 
             }
       }
+   }
+   
+   private boolean intersects(Square s1, Square s2) {
+   // if any of the corners are inside the other shape, then it intersects
+      double s1Width = s1.getWidth();
+      double s1Length = s1.getLength();
+      Point p1 = s1.getLocation();
+      Point p2 = new Point ((int) p1.getX(), (int) (p1.getY()+s1Length));
+      Point p3 = new Point ((int) (p1.getX()+s1Width), (int) p1.getY());
+      Point p4 = new Point ((int) (p1.getX()+s1Width), (int) (p1.getY()+s1Length));
+     
+      return s2.contains(p1) || s2.contains(p2) ||s2.contains(p3) || s2.contains(p4);
    }
    
    private void setupActionListeners() {
@@ -111,21 +150,68 @@ public class ShapeGraphics extends JComponent implements ActionListener {
       if (e.getActionCommand().equals("Reset"))
          reset();
    }
+   
+   private void addClickListeners() {
+      addMouseListener(
+         new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+               int num = 0;
+               super.mouseClicked(me);
+               System.out.print("Clicked ");
+               for (DrawingObject object : objects) {
+                  Shape s = object.getShape();
+                  Square square;
+                  if (s instanceof Square) {
+                     square = (Square) s; 
+                     if (square.contains(me.getPoint())) {
+                        System.out.println(" on a " + square.getType());
+                     }
+                  }
+                  else 
+                     s =  null;
+               
+               }
+               num++;
+               System.out.println(num);
+            }}
+         );
+   }
   
    public void paintComponent(Graphics g) {  // This method is run whenever the graphics frame needs to be repainted
       drawObjects(g);
    }
 
-   public void drawObjects(Graphics g) {
+   public void drawObjects(Graphics g) {     // THIS DRAWS all of the shapes in the list
       for (DrawingObject o : objects) {
          Shape s = o.getShape();
-         if (s instanceof Square) {
+         if (s instanceof Square) {          // CURRENTLY ONLY WORKS FOR SQUARES
             Square square = (Square) s;
-            if (! squareOnFrame(square))
-               s.setLocation(new Point(0, (int) s.getLocation().getY()));
+            if (! squareOnFrame(square)) {
+            //     s.setLocation(new Point(0, (int) s.getLocation().getY()));     // starts object at left again
+             //  o.setSpeed(DrawingObject.getRandomSpeed());    // changes speed
+               o.setSpeed(-o.getSpeed());                      // Causes object to bounce
+            }
+            checkForCollisions(o, square, objects);
             square.drawMe(g);
+            //TODO ... how can we add an event listener for the square???
          }
       }
+   }
+   
+   private void checkForCollisions(DrawingObject o, Square square, List<DrawingObject> objects) {
+      for (DrawingObject obj : objects) {
+         if (obj.getDraw() && (obj.getShape() instanceof Square)) {
+            Square s2 = (Square) obj.getShape();
+            if ((square != s2) && (intersects(square, s2))) {
+               collisions++;
+               lblCollisions.setText("Collisions: " + collisions + "  ");
+               o.setDraw(false);
+               obj.setDraw(false);
+            }
+         } 
+      }  
+   
    }
          
    private int rand(int min, int max) {  // gets a random integer between min and max
@@ -133,8 +219,10 @@ public class ShapeGraphics extends JComponent implements ActionListener {
    }
    
    private void randomizeLocations() { // sets a random location for each shape
-      for (DrawingObject o : objects)   
+      for (DrawingObject o : objects)   {
          o.getShape().setLocation(rand(1,WIDTH),rand(1,HEIGHT));
+         o.setDraw(true);
+      }
    }
    
    private Color randomColor() {  // returns a random color from the colors array
@@ -148,6 +236,7 @@ public class ShapeGraphics extends JComponent implements ActionListener {
          o.getShape().setFillColor(randomColor());
       }
    }
+   
    
    private void reset() {
       randomizeLocations();                   // change the locations of all of the shapes
@@ -168,6 +257,4 @@ public class ShapeGraphics extends JComponent implements ActionListener {
       ShapeGraphics s = new ShapeGraphics();    // instantiate graphics test
       s.reset();                                // places all of the shapes
    }
-      //TODO Add shape movement!
-      //TODO Add Collisions
 }

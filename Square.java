@@ -11,9 +11,10 @@ public class Square extends Rectangle {
  
    Square(double s, Point p, Color line, Color fill) {
       super (s,s);
-      super.setLocation(p);
-      super.setLineColor(line);
-      super.setFillColor(fill);
+      setLocation(p);
+      setLineColor(line);
+      setFillColor(fill);
+      setType("Square");
    }
    
    Square(double s) {
@@ -42,6 +43,19 @@ public class Square extends Rectangle {
      
      Point newLocation = new Point((int)newX, (int)newY);
      setLocation(newLocation);
+   }
+   
+   public boolean contains(Point p) {      // THIS METHOD BELONGS IN RECTANGLE
+     double px = p.getX();
+     double py = p.getY();
+ 
+     Point location = super.getLocation();
+     double startX = location.getX();
+     double startY = location.getY();
+     double endX = startX + super.getWidth();
+     double endY = startY + super.getLength();
+     
+     return px >= startX && px <= endX && py >= startY && py <= endY;    
    }
      
    

@@ -3,13 +3,14 @@ import java.awt.Graphics;
 import java.awt.Color;
 
 public abstract class Shape {
-  public String type = "Shape";
+  private String type = "Shape";
   private Point location;
   private Color lineColor;
   private Color fillColor;
  
-  abstract double area();
- // abstract void drawMe(Graphics g);
+  abstract double getArea();
+  abstract double getPerimeter();
+  abstract void drawMe(Graphics g);
   
   public String getType() {
     return type;
@@ -43,5 +44,9 @@ public abstract class Shape {
   public void setLocation(Point p) {
     if (location == null) location = new Point();
     location.setLocation(p);
+  }
+  
+  public void setType(String t) {
+    type = t;
   }
 }
