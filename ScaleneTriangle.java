@@ -3,9 +3,9 @@
 *  Date: 5/6/19
 */
 
-public class Scalene extends Triangle
+public class ScaleneTriangle extends Triangle
 {
-   public Scalene(double a, double b, double c)
+   public ScaleneTriangle(double a, double b, double c)
    {
       setType("Scalene Triangle");
    }
