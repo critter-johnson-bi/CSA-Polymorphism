@@ -16,7 +16,7 @@ public interface DrawableShape {
   private double speed;
 
 */
-    abstract void drawMe(Graphics g);
+    void drawMe(Graphics g);
 
    Point getLocation();
    
