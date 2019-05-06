@@ -10,11 +10,8 @@ public interface DrawableShape {
   private Point location;
   private Color lineColor;
   private Color fillColor;
-
-
   private boolean draw;
   private double speed;
-
 */
     void drawMe(Graphics g);
 
