@@ -30,8 +30,6 @@ public class DrawableSquare extends Rectangle implements DrawableShape {
    DrawableSquare(double s) {
       this(s, new Point(50, 50), Color.BLUE, Color.GREEN);      
    }
- //
- 
 
   public Point getLocation() {
     return location;
