@@ -21,7 +21,7 @@ public class EquilateralTriangle extends Triangle
    }
    
    //METHODS
-   public double area()
+   public double getArea()
    { return (Math.sqrt(3) / 4.0) * getA() * getA(); }
    
 }

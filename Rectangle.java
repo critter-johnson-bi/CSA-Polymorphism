@@ -37,7 +37,6 @@ public class Rectangle extends Shape {
    public double getArea() {
       return length * width;
    }
-   
    //Printing format
    public String toString() {
       return "side 1 is equal to " + length + " and side 2 is equal to " + width;

@@ -10,7 +10,7 @@ public class RightTriangle extends Triangle
       setType("Right Triangle");
    }
 
-   public double area()
+   public double getArea()
    {
       return .5 * getA() * getB();
    }

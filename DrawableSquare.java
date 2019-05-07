@@ -112,7 +112,7 @@ public class DrawableSquare extends Rectangle implements DrawableShape {
      double px = p.getX();
      double py = p.getY();
  
-     Point location = super.getLocation();
+     Point location = getLocation();
      double startX = location.getX();
      double startY = location.getY();
      double endX = startX + super.getWidth();
@@ -124,12 +124,12 @@ public class DrawableSquare extends Rectangle implements DrawableShape {
    
    public void drawMe(Graphics g) {
    
-      Point topLeft = super.getLocation();
+      Point topLeft = getLocation();
       int ul = (int) topLeft.getX();
       int ur = (int) topLeft.getY();
       int side = (int) super.getWidth();
-      Color penColor = super.getLineColor();
-      Color fillColor = super.getFillColor();
+      Color penColor = getLineColor();
+      Color fillColor = getFillColor();
        
       if (penColor == null && fillColor == null) {
          g.setColor(Color.BLACK);        
