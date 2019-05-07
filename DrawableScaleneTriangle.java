@@ -24,6 +24,9 @@ public class DrawableScaleneTriangle extends ScaleneTriangle implements Drawable
    
    public void drawMe(Graphics g)
    {
+      Point loc = getLocation();
+      int x = (int) loc.getX();
+      int y = (int) loc.getY();
       
    }
    
