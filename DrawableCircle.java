@@ -1,3 +1,5 @@
+/*FRANKY WROTE THIS - or not if there are a lot of mistakes */
+
 import java.awt.Point;
 import java.awt.Graphics;
 import java.awt.Color;
