@@ -35,10 +35,18 @@ public class DrawableRightTriangle extends RightTriangle implements DrawableShap
       int y = (int) topLeft.getY();
       int newX = (int) (x + getB());
       int newY = (int) (y + getA());
+      
+      // creates point arrays
+      int[] xPoints = new int[] {x, x, newX};
+      int[] yPoints = new int[] {y, newY, newY};
+      
+      // outlines the polygons
       g.setColor(getLineColor());
-      g.drawLine(x, y, x, newY);
-      g.drawLine(x, newY, newX, newY);
-      g.drawLine(newX, newY, x, y);
+      g.drawPolygon(xPoints, yPoints, 3);
+      
+      // fills the polygons
+      g.setColor(getFillColor());
+      g.fillPolygon(xPoints, yPoints, 3);
    }
    
    public Point getLocation()
