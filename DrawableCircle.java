@@ -14,6 +14,11 @@ public class DrawableCircle extends Circle implements DrawableShape
   private boolean draw;
   private double speed;
   
+  public DrawableCircle(double r)
+  {
+      super(r);
+  }
+  
   public void drawMe(Graphics g)
    {
       Point topLeft = getLocation();
