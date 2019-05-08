@@ -22,6 +22,7 @@ public class DrawableIsocelesTriangle extends IsocelesTriangle implements Drawab
       super(ab, c);
       this.lineColor = lineColor;
       this.fillColor = fillColor;
+      setLocation(0, 0);
    }
    
    public void drawMe(Graphics g)
