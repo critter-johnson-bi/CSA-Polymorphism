@@ -85,12 +85,14 @@ public class DrawableEquilateralTriangle extends EquilateralTriangle implements 
    
    public void setLocation(int x, int y)
    {
-      this.location = new Point(x, y);
+      if (location == null) location = new Point();
+      location.setLocation(x, y);
    }
    
    public void setLocation(Point p)
    {
-      this.location = p;
+      if (location == null) location = new Point();
+      location.setLocation(p);
    }
    
    public boolean getDraw()
