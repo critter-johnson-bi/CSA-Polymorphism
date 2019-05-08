@@ -10,7 +10,6 @@ public class DrawableCircle extends Circle implements DrawableShape
   private Color lineColor;
   private Color fillColor;
 
-
   private boolean draw;
   private double speed;
   
@@ -35,11 +34,11 @@ public class DrawableCircle extends Circle implements DrawableShape
       else {
          if (penColor != null) {
             g.setColor(penColor);
-            g.drawRect(ul, ur, radius, radius);
+            g.drawOval(ul, ur, radius, radius);
          }
         if (fillColor != null) {
             g.setColor(fillColor);
-            g.fillRect(ul, ur, radius, radius);
+            g.fillOval(ul, ur, radius, radius);
          }
       }
    }
