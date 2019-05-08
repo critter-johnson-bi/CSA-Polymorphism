@@ -5,10 +5,10 @@ import java.awt.Color;
 public class DrawableShapeTesterTK extends ArrayList<DrawableShape>{
 
    public final static int MINSIZE = 10;        // smallest shape size
-   public final static int MAXSIZE = 20;       // largest shape size, also size of the arraylist of shapes
-
+   public final static int MAXSIZE = 50;       // largest shape size, also size of the arraylist of shapes
+   public final static int NUM_SHAPES = 20;
    DrawableShapeTesterTK() {                            // instantiates and fills array with random shapes
-       for (int i = 0; i < MAXSIZE; i++) addRandomShape();
+       for (int i = 0; i < NUM_SHAPES; i++) addRandomShape();
   }
    
    private static double randNum() {

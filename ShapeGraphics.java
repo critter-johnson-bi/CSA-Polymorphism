@@ -106,10 +106,16 @@ public class ShapeGraphics extends JComponent implements ActionListener {
      
    private void moveSquare(DrawableSquare square, double speed) {
       Point p = square.getLocation();
-      square.slide(speed,0);
+      square.slide(speed,0); // speed, 0 makes the squares move from left to right
       this.repaint();
    }
-
+   
+   private void move(DrawableShape shape, double speed) {
+     Point p = shape.getLocation();
+ //    shape.slide(speed, 0);
+     this.repaint();
+   }
+   
    private void moveSquares() {
       DrawableSquare square;
      
@@ -183,16 +189,8 @@ public class ShapeGraphics extends JComponent implements ActionListener {
 
    public void drawObjects(Graphics g) {     // THIS DRAWS all of the shapes in the list
       for (DrawableShape s  : shapes) {
-  //    try {
-       s.drawMe(g);
-/*      }
-      catch () {
-      }
-  /*       if (s instanceof DrawableScaleneTriangle) 
-           ((DrawableScaleneTriangle) s).drawMe(g);
-         if (s instanceof DrawableSquare) {          // CURRENTLY ONLY WORKS FOR SQUARES
-            DrawableSquare square = (DrawableSquare) s;
-            if (! squareOnFrame(square)) {
+        s.drawMe(g);
+          if (! squareOnFrame(square)) {
                //  s.setLocation(new Point(0, (int) s.getLocation().getY()));     // starts object at left again
           //     s.setSpeed(DrawingObject.getRandomSpeed());    // changes speed
                s.setSpeed(-s.getSpeed());                      // Causes object to bounce
@@ -201,9 +199,9 @@ public class ShapeGraphics extends JComponent implements ActionListener {
             square.drawMe(g);
             //TODO ... how can we add an event listener for the square???
             
-         }*/
+         }
       }
-   }
+   
    
    private void checkForCollisions(DrawableShape s, DrawableSquare square) {
       for (DrawableShape obj : shapes) {

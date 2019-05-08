@@ -26,7 +26,7 @@ All:
          - If you know the size of the frame and the position and size of the object, you can 
                make sure that you don't draw it if it is not completely on the frame, but
                that requires each shape to have a size ... is it reasonable to require that each
-               shape provide a getWidth9) and a getLength()?
+               shape provide a getWidth() and a getLength()?
                
  - Should our shapes have their own speed?  Or, should those be stored somewhere else?
       Should we have graphics objects that have
@@ -41,3 +41,8 @@ All:
       - Write some calls that result in method errors      
  
  You may copy/paste any methods from the ShapeTesterTK to your tester.
+ 
+ ---------------------------------------------------------
+ DrawableCircle needs a constructor with one double parameter
+ 
+ 
