@@ -162,9 +162,9 @@ public class ShapeGraphics extends JComponent implements ActionListener {
                super.mouseClicked(me);
                System.out.print("Clicked ");
                for (DrawableShape s : shapes) {
-                  Square square;
-                  if (s instanceof Square) {
-                     square = (Square) s; 
+                  DrawableSquare square;
+                  if (s instanceof DrawableSquare) {
+                     square = (DrawableSquare) s; 
                      if (square.contains(me.getPoint())) {
                         System.out.println(" on a " + square.getType());
                      }
@@ -183,8 +183,13 @@ public class ShapeGraphics extends JComponent implements ActionListener {
 
    public void drawObjects(Graphics g) {     // THIS DRAWS all of the shapes in the list
       for (DrawableShape s  : shapes) {
-         if (s instanceof DrawableScaleneTriangle) 
-           ((DrawableScaleneTriangle) s).drawMe();
+  //    try {
+       s.drawMe(g);
+/*      }
+      catch () {
+      }
+  /*       if (s instanceof DrawableScaleneTriangle) 
+           ((DrawableScaleneTriangle) s).drawMe(g);
          if (s instanceof DrawableSquare) {          // CURRENTLY ONLY WORKS FOR SQUARES
             DrawableSquare square = (DrawableSquare) s;
             if (! squareOnFrame(square)) {
@@ -195,7 +200,8 @@ public class ShapeGraphics extends JComponent implements ActionListener {
             checkForCollisions(s, square);
             square.drawMe(g);
             //TODO ... how can we add an event listener for the square???
-         }
+            
+         }*/
       }
    }
    

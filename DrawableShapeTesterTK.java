@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Color;
 
 public class DrawableShapeTesterTK extends ArrayList<DrawableShape>{
 
@@ -19,12 +20,11 @@ public class DrawableShapeTesterTK extends ArrayList<DrawableShape>{
       DrawableShape triangle = null;
    
       switch (rand) {
-      //   case 0: triangle = new DrawableEquilateralTriangle(randNum()); 
-      //      break;
-      // case 1: triangle = new Scalene(randNum(), randNum(), randNum()); break;
-      // case 2: triangle = new Isoceles(randNum(), randNum()); break;
-      //   default: triangle = new DrawableRightTriangle(randNum(), randNum()); 
-      //      break;           
+         case 0: triangle = new DrawableEquilateralTriangle(randNum(), Color.GREEN, Color.DARK_GRAY); 
+            break;
+      case 1: triangle = new DrawableScaleneTriangle(randNum(), randNum(), randNum(), Color.GREEN, Color.DARK_GRAY); break;
+       case 2: triangle = new DrawableIsocelesTriangle(randNum(), randNum(), Color.GREEN, Color.DARK_GRAY); break;
+         default: triangle = new DrawableRightTriangle(randNum(), randNum(), Color.GREEN, Color.DARK_GRAY);           
       } 
       return triangle;
    }
@@ -32,15 +32,16 @@ public class DrawableShapeTesterTK extends ArrayList<DrawableShape>{
    public static DrawableShape getRandomShape() {                        // Add a random shape to the list
       int rand = (int) (Math.random() * 7);
       switch (rand) {
-        // case 0: return new DrawableCircle(randNum()); 
+ //       case 0: return new DrawableCircle(randNum()); 
          case 1: return new DrawableSquare(randNum()); 
-       //  case 2: return new DrawableRectangle(randNum(), randNum());    
+         case 2: return new DrawableRectangle(randNum(), randNum());    
          case 3: 
          case 4:         
          case 5: 
          case 6: return getRandomTriangle(); 
+         default: return new DrawableSquare(randNum());
                  }
-       return null;
+ //      return null;
    }
    
    public void addRandomShape() {
