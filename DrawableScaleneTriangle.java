@@ -50,7 +50,13 @@ public class DrawableScaleneTriangle extends ScaleneTriangle implements Drawable
       xPoints[2] = x + b;
       yPoints[2] = y;
       
+      // draws the stuff
+      g.setColor(getLineColor());
       g.drawPolygon(xPoints, yPoints, 3);
+      
+      // fills in the stuff
+      g.setColor(getFillColor());
+      g.fillPolygon(xPoints, yPoints, 3);
    }
    
    public Point getLocation()
