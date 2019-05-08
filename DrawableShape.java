@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.awt.Color;
 
 public interface DrawableShape {
-   static final int MIN_SPEED = 5;
+   static final int MIN_SPEED = 1;
    static final int MAX_SPEED = 20;
 
    void drawMe(Graphics g);

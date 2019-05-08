@@ -29,7 +29,7 @@ public class Square extends Rectangle {
    
    public String toString() {
       return String.format("%s: side: %,.2f, area: %,.2f, perimeter: %,.2f", 
-                              super.getType(), super.getLength(), getArea(), getPerimeter());
+                              getType(), super.getLength(), getArea(), getPerimeter());
     
    }
  

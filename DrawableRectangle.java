@@ -39,13 +39,7 @@ public class DrawableRectangle extends Rectangle implements DrawableShape {
       int ur = (int) topLeft.getY();
       int side1 = (int) super.getLength();
       int side2 = (int) super.getWidth();
-   /*     
-     g.drawLine(ul, ur, ul + side, ur);
-     g.drawLine(ul, ur, ul, ur + side);
-     g.drawLine(ul+side, ur+side, ul, ur+side);
-     g.drawLine(ul+side, ur+side, ul + side, ur);
-     */
-     
+
       Color penColor = lineColor;
       Color intColor = fillColor;
      

@@ -37,13 +37,14 @@ public class ShapeGraphics extends JComponent implements ActionListener {
    
    ShapeGraphics () {  // create the Graphics Window and add "this" to it
       shapes = new DrawableShapeTesterTK();
+      System.out.println(shapes);
       createFrame();           
       setupActionListeners();  
       addClickListeners(); 
    }
    
    public ArrayList<DrawableShape> getShapes() {
-     return shapes;
+      return shapes;
    }
    
    private void createFrame() {
@@ -104,16 +105,16 @@ public class ShapeGraphics extends JComponent implements ActionListener {
       return onFrame(new Point((int)ll, (int)lr));
    }
      
-   private void moveSquare(DrawableSquare square, double speed) {
+   private void moveSquare(DrawableSquare square) {
       Point p = square.getLocation();
-      square.slide(speed,0); // speed, 0 makes the squares move from left to right
+      square.slide(square.getSpeed(),0); // speed, 0 makes the squares move from left to right
       this.repaint();
    }
    
    private void move(DrawableShape shape, double speed) {
-     Point p = shape.getLocation();
- //    shape.slide(speed, 0);
-     this.repaint();
+      Point p = shape.getLocation();
+   //    shape.slide(shape.getSpeed(), 0);
+      this.repaint();
    }
    
    private void moveSquares() {
@@ -123,7 +124,7 @@ public class ShapeGraphics extends JComponent implements ActionListener {
          if (s.getDraw())
             if (s instanceof DrawableSquare) {
                square = (DrawableSquare) s;
-               moveSquare(square, s.getSpeed()); 
+               moveSquare(square); 
             }
       }
    }
@@ -189,21 +190,24 @@ public class ShapeGraphics extends JComponent implements ActionListener {
 
    public void drawObjects(Graphics g) {     // THIS DRAWS all of the shapes in the list
       for (DrawableShape s  : shapes) {
-        s.drawMe(g);
-          if (! squareOnFrame(square)) {
+         if (s instanceof DrawableSquare) {
+            square = (DrawableSquare) s;
+            
+            if (! squareOnFrame(square)) {
                //  s.setLocation(new Point(0, (int) s.getLocation().getY()));     // starts object at left again
-          //     s.setSpeed(DrawingObject.getRandomSpeed());    // changes speed
-               s.setSpeed(-s.getSpeed());                      // Causes object to bounce
+               //  s.setSpeed(DrawingObject.getRandomSpeed());    // changes speed
+               square.setSpeed(-square.getSpeed());                      // Causes object to bounce
             }
-            checkForCollisions(s, square);
-            square.drawMe(g);
+            checkForCollisions(square);
+         }
+         s.drawMe(g);
             //TODO ... how can we add an event listener for the square???
             
-         }
       }
+   }
    
    
-   private void checkForCollisions(DrawableShape s, DrawableSquare square) {
+   private void checkForCollisions(DrawableSquare square) {
       for (DrawableShape obj : shapes) {
          if (obj.getDraw() && (obj instanceof Square)) {
             DrawableSquare s2 = (DrawableSquare) obj;
@@ -211,11 +215,11 @@ public class ShapeGraphics extends JComponent implements ActionListener {
                collisions++;
                lblCollisions.setText("Collisions: " + collisions + "  ");
                square.setDraw(false);
+               System.out.println("COLLISION");
                obj.setDraw(false);
             }
          } 
-      }  
-   
+      }    
    }
          
    private int rand(int min, int max) {  // gets a random integer between min and max
@@ -224,9 +228,9 @@ public class ShapeGraphics extends JComponent implements ActionListener {
    
    private void randomizeLocations() { // sets a random location for each shape
       for (DrawableShape s : shapes)   {
-        if (s != null) {
-         s.setLocation(rand(1,WIDTH),rand(1,HEIGHT));
-         s.setDraw(true);
+         if (s != null) {
+            s.setLocation(rand(1,WIDTH),rand(1,HEIGHT));
+            s.setDraw(true);
          }
       }
    }
@@ -237,10 +241,10 @@ public class ShapeGraphics extends JComponent implements ActionListener {
    
    private void randomizeColors() {  // randomly changes all of the line anfd fill colors foreach shape.
       for (DrawableShape s : shapes) {
-      if (s != null) {
-      //  s.setLineColor(randomColor()); // Really need the stroke to be bigger for this to
-         s.setLineColor(Color.BLACK);    // work, but that requires Graphics2D and setStroke
-         s.setFillColor(randomColor());
+         if (s != null) {
+         //  s.setLineColor(randomColor()); // Really need the stroke to be bigger for this to
+            s.setLineColor(Color.BLACK);    // work, but that requires Graphics2D and setStroke
+            s.setFillColor(randomColor());
          }
       }
    }

@@ -3,7 +3,7 @@ import java.awt.Point;
 import java.awt.Color;
 
 
-public class DrawableSquare extends Rectangle implements DrawableShape {
+public class DrawableSquare extends Square implements DrawableShape {
 
   private Point location;
   private Color lineColor;
@@ -17,7 +17,8 @@ public class DrawableSquare extends Rectangle implements DrawableShape {
    }
  
    DrawableSquare(double s, Point p, Color line, Color fill) {
-      super (s,s);
+//      super (s,s);
+super(s);
     int option = (int) Math.random() * 3;
     draw = option < 2;
     speed =  getRandomSpeed();
@@ -146,8 +147,7 @@ public class DrawableSquare extends Rectangle implements DrawableShape {
    }
       
    public String toString() {
-      return String.format("%s: side: %,.2f, area: %,.2f, perimeter: %,.2f", 
-                              super.getType(), super.getLength(), getArea(), getPerimeter());
+      return super.toString() + String.format(", Location: %s, Speed: %.2f\n", getLocation().toString(), speed);
     
    }
  
