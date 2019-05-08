@@ -34,10 +34,11 @@ public class DrawableRectangle extends Rectangle implements DrawableShape {
    }
       
    public void drawMe(Graphics g) {
-      Point topLeft = getLocation();
+      Point topLeft = location;
       int ul = (int) topLeft.getX();
       int ur = (int) topLeft.getY();
-      int side = (int) super.getWidth();
+      int side1 = (int) super.getLength();
+      int side2 = (int) super.getWidth();
    /*     
      g.drawLine(ul, ur, ul + side, ur);
      g.drawLine(ul, ur, ul, ur + side);
@@ -45,22 +46,22 @@ public class DrawableRectangle extends Rectangle implements DrawableShape {
      g.drawLine(ul+side, ur+side, ul + side, ur);
      */
      
-      Color penColor = getLineColor();
-      Color fillColor = getFillColor();
+      Color penColor = lineColor;
+      Color intColor = fillColor;
      
      
-      if (penColor == null && fillColor == null) {
+      if (penColor == null && intColor == null) {
          g.setColor(Color.BLACK);        
-         g.drawRect(ul, ur, side, side);
+         g.drawRect(ul, ur, side1, side2);
       }
       else {
          if (penColor != null) {
             g.setColor(penColor);
-            g.drawRect(ul, ur, side, side);
+            g.drawRect(ul, ur, side1, side2);
          }
-        if (fillColor != null) {
-            g.setColor(fillColor);
-            g.fillRect(ul, ur, side, side);
+        if (intColor != null) {
+            g.setColor(intColor);
+            g.fillRect(ul, ur, side1, side2);
          }
       } 
    }
