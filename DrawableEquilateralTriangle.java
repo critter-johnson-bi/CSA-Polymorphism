@@ -1,13 +1,12 @@
 /*
-*  Author: Critter Johnosn
-*  Date: 5/6/19
+*  Author: Critter Johnson
 */
 
 import java.awt.Point;
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class DrawableScaleneTriangle extends ScaleneTriangle implements DrawableShape
+public class DrawableEquilateralTriangle extends EquilateralTriangle implements DrawableShape
 {
    private Point location;
    private Color lineColor;
@@ -15,9 +14,9 @@ public class DrawableScaleneTriangle extends ScaleneTriangle implements Drawable
    private boolean draw;
    private double speed;
    
-   public DrawableScaleneTriangle(double a, double b, double c, Color lineColor, Color fillColor)
+   public DrawableEquilateralTriangle(double side, Color lineColor, Color fillColor)
    {
-      super(a, b, c);
+      super(side);
       this.lineColor = lineColor;
       this.fillColor = fillColor;
    }
