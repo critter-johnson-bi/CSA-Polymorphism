@@ -19,6 +19,7 @@ public class DrawableRightTriangle extends RightTriangle implements DrawableShap
       super(a, b, c);
       this.lineColor = lineColor;
       this.fillColor = fillColor;
+      setLocation(0, 0);
    }
    
    public DrawableRightTriangle(double a, double b, Color lineColor, Color fillColor)
@@ -26,6 +27,7 @@ public class DrawableRightTriangle extends RightTriangle implements DrawableShap
       super(a, b);
       this.lineColor = lineColor;
       this.fillColor = fillColor;
+      setLocation(0, 0);
    }
    
    public void drawMe(Graphics g)

@@ -20,6 +20,7 @@ public class DrawableScaleneTriangle extends ScaleneTriangle implements Drawable
       super(a, b, c);
       this.lineColor = lineColor;
       this.fillColor = fillColor;
+      setLocation(0, 0);
    }
    
    public void drawMe(Graphics g)

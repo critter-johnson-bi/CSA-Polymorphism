@@ -19,6 +19,7 @@ public class DrawableEquilateralTriangle extends EquilateralTriangle implements 
       super(side);
       this.lineColor = lineColor;
       this.fillColor = fillColor;
+      setLocation(0, 0);
    }
    
    public void drawMe(Graphics g)
