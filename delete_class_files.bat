@@ -1,2 +1,2 @@
-// run this to delete all class files so you can force everything to recompile
+ECHO Deleting all .class files
 DEL *.class
