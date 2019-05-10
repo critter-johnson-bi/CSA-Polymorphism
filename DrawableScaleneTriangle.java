@@ -35,7 +35,7 @@ public class DrawableScaleneTriangle extends ScaleneTriangle implements Drawable
       int c = (int) getC();
       
       // gets the height and shifts y down to the bottom left
-      int h = (int) (2 * (getArea() / b));
+      int h = (int) getHeight();
       y += h;
       // adds the bottom left point
       xPoints[0] = x;
@@ -74,6 +74,26 @@ public class DrawableScaleneTriangle extends ScaleneTriangle implements Drawable
    {
       return fillColor;
    }
+   
+   public boolean getDraw()
+   {
+      return draw;
+   }
+   
+   public double getSpeed()
+   {
+      return speed;
+   }
+   
+   public double getLength()
+   {
+      return getHeight();
+   }
+   
+   public double getWidth()
+   {
+      return getB();
+   }
   
    public void setLineColor(Color c)
    {
@@ -95,16 +115,6 @@ public class DrawableScaleneTriangle extends ScaleneTriangle implements Drawable
    {
       if (location == null) location = new Point();
       location.setLocation(p);
-   }
-   
-   public boolean getDraw()
-   {
-      return draw;
-   }
-   
-   public double getSpeed()
-   {
-      return speed;
    }
    
    public void setDraw(boolean b)

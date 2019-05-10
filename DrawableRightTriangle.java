@@ -36,7 +36,7 @@ public class DrawableRightTriangle extends RightTriangle implements DrawableShap
       int x = (int) topLeft.getX();
       int y = (int) topLeft.getY();
       int newX = (int) (x + getB());
-      int newY = (int) (y + getA());
+      int newY = (int) (y + getHeight());
       
       // creates point arrays
       int[] xPoints = new int[] {x, x, newX};
@@ -65,6 +65,26 @@ public class DrawableRightTriangle extends RightTriangle implements DrawableShap
    {
       return fillColor;
    }
+      
+   public boolean getDraw()
+   {
+      return draw;
+   }
+   
+   public double getSpeed()
+   {
+      return speed;
+   }
+   
+   public double getLength()
+   {
+      return getHeight();
+   }
+   
+   public double getWidth()
+   {
+      return getB();
+   }
   
    public void setLineColor(Color c)
    {
@@ -87,17 +107,7 @@ public class DrawableRightTriangle extends RightTriangle implements DrawableShap
       if (location == null) location = new Point();
       location.setLocation(p);
    }
-   
-   public boolean getDraw()
-   {
-      return draw;
-   }
-   
-   public double getSpeed()
-   {
-      return speed;
-   }
-   
+
    public void setDraw(boolean b)
    {
       this.draw = b;

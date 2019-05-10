@@ -15,4 +15,9 @@ public class ScaleneTriangle extends Triangle
       double s = (getA() + getB() + getC()) / 2;
       return Math.sqrt(s * (s - getA()) * (s - getB()) * (s - getC()));
    }
+   
+   public double getHeight()
+   {
+      return 2 * (getArea() / getB());
+   }
 }

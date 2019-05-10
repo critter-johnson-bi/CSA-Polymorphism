@@ -21,4 +21,9 @@ public class RightTriangle extends Triangle
    {
       return .5 * getA() * getB();
    }
+   
+   public double getHeight()
+   {
+      return getA();
+   }
 }
