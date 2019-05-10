@@ -53,6 +53,8 @@ public abstract class Triangle extends Shape
    
    public abstract double getArea();
    
+   public abstract double getHeight();
+   
    public double getPerimeter()
    { return getA() + getB() + getC(); }
    
