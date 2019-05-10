@@ -27,5 +27,10 @@ public class IsocelesTriangle extends Triangle
       double height = Math.sqrt(getA() * getA() - getC() * getC());
       return 0.5 * getC() * height;
    }
+   
+   public double getHeight()
+   {
+      return Math.sqrt(getA() * getA() - (getC()/2) * (getC()/2));
+   }
 
 }

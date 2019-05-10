@@ -115,4 +115,15 @@ public class DrawableEquilateralTriangle extends EquilateralTriangle implements 
    {
       this.speed = s;
    }
+   
+   public double getWidth()
+   {
+      return getA();
+   }
+   
+   public double getLength()
+   {
+      return getHeight();
+   }
+
 }

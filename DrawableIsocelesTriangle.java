@@ -98,5 +98,15 @@ public class DrawableIsocelesTriangle extends IsocelesTriangle implements Drawab
    {
       this.speed = s;
    }
+   
+   public double getWidth()
+   {
+      return getC();
+   }
+   
+   public double getLength()
+   {
+      return getHeight();
+   }
 
 }

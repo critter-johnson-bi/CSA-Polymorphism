@@ -24,4 +24,9 @@ public class EquilateralTriangle extends Triangle
    public double getArea()
    { return (Math.sqrt(3) / 4.0) * getA() * getA(); }
    
+   public double getHeight()
+   {
+      return Math.sqrt(getA() * getA() - (getC()/2) * (getC()/2));
+   }
+   
 }
